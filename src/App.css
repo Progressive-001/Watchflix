@@ -1,0 +1,11 @@
+#root {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.app-container{
+  z-index: -9999;
+  background: #000;
+  height: 100%;
+}

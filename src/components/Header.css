@@ -1,0 +1,21 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1208px;
+    /* margin: 0px 35px; */
+    position: relative;
+    z-index: 100;
+    padding: 0px 35px;
+}
+
+.nav-button{
+    color: white;
+    background-color: #E50914;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* background: linear-gradient(149deg, #192247 0%, #210e17 96.86%) */

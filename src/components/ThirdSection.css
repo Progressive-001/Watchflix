@@ -1,0 +1,20 @@
+.box{
+    background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
+    /* padding: 20px; */
+    border-radius: 16px;
+}
+
+.thirdSection{
+    margin-top: 110px;
+
+    h2{
+        text-align: left;
+    }
+}
+
+
+@media(max-width:608px){
+    .paraContent{
+        text-align: left;
+    }
+}

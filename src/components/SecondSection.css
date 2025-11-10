@@ -1,0 +1,119 @@
+.second-section {
+  /* position: relative; */
+  /* top: 100px; */
+  margin-top: -99px;
+  z-index: 9999;
+}
+
+.content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    /* padding: 3rem 0rem; */
+    position: relative;
+    top: 100px;
+    gap: 15px;
+    /* margin-top: -20px; */
+    z-index: 9999;  
+  
+
+    h5{
+        text-align: left;
+        z-index: 100;
+    }
+}
+
+.outlined-text {
+    text-shadow: 
+    -2px -2px 0 #ffffff,  
+    2px -2px 0 #ffffff,
+    -2px  2px 0 #ffffff,
+    2px  2px 0 #ffffff;
+}
+
+
+.first-section{
+  box-sizing: border-box;
+  position: absolute;
+  height: 145px;
+  width: 120%;
+  bottom: -56px;
+  left: -10%;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border: solid .25rem transparent;
+  border-top-left-radius: 45% 100%;
+  border-top-right-radius: 45% 100%;
+  border-bottom: none;
+  background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.4) 80%, rgba(0, 0, 0, 0.1) 100%), black;
+  background-clip: padding-box;
+}
+
+.first-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin-top: -.25rem;
+    border-radius: inherit;
+    background: linear-gradient(to right, rgba(33, 13, 22, 1) 16%, rgba(184, 40, 105, 1), rgba(229, 9, 20, 1), rgba(184, 40, 105, 1), rgba(33, 13, 22, 1) 84%);
+} 
+
+.combine-container{
+    padding-top: 125px; 
+    z-index: 1000;
+    position: absolute;
+    top: -100px;
+    box-sizing: border-box;
+    width: 100vw;
+    left: 50%;    
+    transform: translateX(-50%);
+    overflow: hidden;   
+
+}
+
+
+@media (max-width: 600px) {
+.first-section {
+    height: 90px;
+    bottom: -30px;
+    width: 123%;
+  }
+
+  .content-wrapper {
+    margin-top: 10rem;
+  }
+}
+
+@media (max-width: 1024px) {
+.first-section {
+    height: 100px;
+    bottom: -30px;
+    width: 123%;
+  }
+
+  .content-wrapper {
+    margin-top: -0.2rem;
+  }
+}
+
+@media (max-width: 393px) {
+
+  .content-wrapper {
+    margin-top: -0.3rem;
+  }
+
+}
+@media (min-width: 1024px) {
+
+  .combine-container{
+    padding-top: 130px; 
+  }
+  
+  .content-wrapper{
+    top: 120px;
+  }
+}
