@@ -1,13 +1,18 @@
-import React from 'react'
+// import { useState } from "react"
 import sideControl from "../assets/landingPage/Signup Arrow.svg" 
 
-export default function SideBarControl() {
+export default function SideBarControl({ setIsAnimating, variant, setShow }) {
+
+    const handleMotion = () => {
+        setIsAnimating((prevAnimating) => !prevAnimating)
+        setShow((prevShow) => !prevShow)
+    }
+        
+
   return (
-    <div className='relative bg-[red] w-[100%] h-[100%] flex justify-center  items-center'>
-    {/* <div className='bg-[red] absolute right-[-35px] top-[150px] w-[45px] h-full'> */}
-        {/* <div className=' h-[120px] w-[24px] bg-[#232323] rounded-[8px] flex justify-self-end justify-center items-center mr-1'> */}
-        <div className=' h-[120px] w-[24px] bg-[#232323] rounded-[8px] flex justify-self-end justify-center items-center '>
-            <img src={sideControl} alt="" />
+     <div className={`bg-[black] absolute top-[48.5px] w-[47px] h-[290px] flex justify-center items-center ${variant ==='leftHand' ?  'left-[-35px] rotate-180 z-[1000]' : 'right-[-35px]' }`}> 
+        <div onClick={handleMotion} className=' h-[120px] w-[24px] bg-[#232323] rounded-[8px] flex justify-self-end justify-center items-center cursor-pointer hover:bg-[#2D2D2D]'> 
+            <img src={sideControl} alt=""/>
         </div>
     </div>
   )
