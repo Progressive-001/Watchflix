@@ -29,6 +29,7 @@ export const MovieProvider = ({ children }) => {
         setTopRated(topRes.data.results);
         setUpcoming(upRes.data.results);
         setError(null);
+        // setIsLoading(false);
 
       } catch (error) {
         if (error.name === "CanceledError") {

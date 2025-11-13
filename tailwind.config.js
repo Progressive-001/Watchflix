@@ -6,6 +6,10 @@ export default {
     ],
    theme: {
      extend: {
+       screens: {
+        'max-x1': { 'max': '375px' },
+        'max-x2': { 'max': '320px' }, 
+      },
        gridTemplateColumns: {
         // Simple 16 column grid
         '16': 'repeat(16, minmax(0, 1fr))',
