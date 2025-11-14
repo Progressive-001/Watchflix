@@ -1,10 +1,10 @@
 import Header from '../../components/Header'
 import LandingDetails from '../../components/LandingDetails'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 // import HeroImage from '/assets/landingPage/Hero Image.webp'
 
 import './landingPage.css'
-import FirstSection from '../../components/Firstsection'
+// import FirstSection from '../../components/Firstsection'
 import SecondSection from '../../components/SecondSection'
 import FaqSection from '../../components/FaqSection'
 import ThirdSection from '../../components/ThirdSection'

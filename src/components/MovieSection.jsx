@@ -5,7 +5,7 @@ import Skeleton from '@mui/joy/Skeleton';
 
 export default function MovieSection() {
   const{ isLoading, popular} = useContext(MovieContext);
-//   console.log(numbers);
+  console.log(popular);
   
 
   return (
@@ -14,7 +14,7 @@ export default function MovieSection() {
         {popular && popular.slice(0,10).map((contents, index)=>
                 
             
-            <div className="card-container relative hover:cursor-pointer hover:scale-105 transition-transform duration-500 bg-black border border-gray-500 rounded-[8px]">
+            <div key={index} className="card-container relative hover:cursor-pointer hover:scale-105 transition-transform duration-500 bg-black border border-gray-500 rounded-[8px]">
                 <div className="image-container w-[120px] h-[160px] sm:w-[112px] md:w-[150px] lg:w-[180px] sm:h-[152px] md:h-[220px] lg:h-[252px] rounded-[8px] overflow-hidden">
                 {isLoading ? (
                         <Skeleton animation="wave" variant="overlay" className="!rounded-[8px] !bg-gray-300">

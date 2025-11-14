@@ -1,3 +1,4 @@
+
 import './SecondSection.css'
 import { useContext, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
@@ -13,8 +14,6 @@ export default function SecondSection() {
 
    console.log(isLoading);
    
-
-   
  
   return (
       <div className='second-section '>
@@ -26,7 +25,7 @@ export default function SecondSection() {
          <div className="content-wrapper font-netflix text-headline1 sm:text-headline1 md:text-headline1 lg:text-title2 font-normal">
             <h5 className='font-bold'>Trending Now</h5>
 
-            <div className='h-[300px]'>
+            <div className='h-[190px] sm:h-[190px] md:h-[250px] lg:h-[300px]'>
 
                <AnimatePresence>
                   {show && (
