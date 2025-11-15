@@ -1,6 +1,6 @@
 
 import './SecondSection.css'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import MovieSection from './MovieSection'
@@ -11,9 +11,49 @@ export default function SecondSection() {
    const {isLoading } = useContext(MovieContext)
    const [isAnimating, setIsAnimating] = useState(false)
    const [show, setShow] = useState(false) 
+   const [translateValue, setTranslateValue] = useState(0);
+   const cardRef = useRef(null)
 
    console.log(isLoading);
-   
+
+   // useEffect(() =>{
+      
+   //    const handleSize = ()=>{
+   //       setTranslateValue(window.innerWidth * 1.16)
+   //    // console.log(translateValue);
+
+   //    }
+
+   //    handleSize();
+   //    window.addEventListener('resize', handleSize);
+   //    return() => window.addEventListener('resize', handleSize);
+   //    // console.log(translateValue);
+      
+   // },[])
+
+   useEffect(() => {
+      const calculateTranslate = () => {
+         if (!cardRef.current) return;
+
+         const cardWidth = cardRef.current.offsetWidth;
+         const containerWidth = window.innerWidth;
+
+         const cardsPerRow = Math.floor(containerWidth / cardWidth);
+
+         const safeCards = cardsPerRow > 0 ? cardsPerRow : 1;
+
+         setTranslateValue(cardWidth * safeCards);
+      };
+
+      calculateTranslate();
+      window.addEventListener("resize", calculateTranslate);
+
+      return () => window.removeEventListener("resize", calculateTranslate);
+   }, []);
+
+      console.log(translateValue);
+      console.log("Card width:", cardRef.current?.offsetWidth);
+
  
   return (
       <div className='second-section '>
@@ -48,18 +88,28 @@ export default function SecondSection() {
                   )}
                </AnimatePresence>
 
-               {/* {popular && popular.slice(0,10).map((item, index)=>
-                  <div key={index} className={`${isAnimating ? 'transition -translate-x-[1030px] duration-1000': 'translate-x-[0px] duration-1000'}`}> 
-                     <MovieSection contents={item} numbers={index}/>
-                  </div> 
-               )} */}
 
-               {isLoading ? (
-                  <div className={`${isAnimating ? 'transition -translate-x-[1030px] duration-1000': 'translate-x-[0px] duration-1000'} flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]`}> 
+              {isLoading ? (
+                  <div
+                     style={{
+                        transform: isAnimating
+                        ? `translateX(-${translateValue}px)`
+                        : "translateX(0px)",
+                        transition: "transform 1s ease-in-out",
+                     }}
+                     className="flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]"
+                  >
                      <MovieLoader />
-                  </div> 
-               ): (<div  className={` ${isAnimating ? 'transition -translate-x-[1090px] duration-1000 max-x1:-translate-x-[1300px] max-x2:-translate-x-[1195px] sm:-translate-x-[750px] md:-translate-x-[1090px] lg:-translate-x-[1190px] xl:-translate-x-[1010px]': 'translate-x-[0px] duration-1000'} flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]`}> 
-                     <MovieSection/>
+                  </div>
+                  ) : (
+                  <div
+                     style={{
+                        transform: `translateX(${isAnimating ? -translateValue : 0}px)`,
+                        transition: "transform 1s ease-in-out",
+                     }}
+                     className="flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]"
+                  >
+                     <MovieSection cardRef={cardRef}/>
                   </div>
                )}
 
