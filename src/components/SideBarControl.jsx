@@ -1,13 +1,14 @@
-// import { useState } from "react"
 import sideControl from "../assets/landingPage/Signup Arrow.svg" 
 
-export default function SideBarControl({ setIsAnimating, variant, setShow }) {
+export default function SideBarControl({ setIsAnimating, variant, setShow}) {
 
-    const handleMotion = () => {
-        setIsAnimating((prevAnimating) => !prevAnimating)
-        setShow((prevShow) => !prevShow)
-    }
-        
+  const handleMotion = () => {
+    setIsAnimating((prevAnimating) => !prevAnimating)
+    setShow((prevShow) => !prevShow)
+
+  }
+
+
 
   return (
      <div className={`bg-[black] absolute top-[48.5px] w-[47px] h-[190px] sm:h-[180px] md:h-[250px] lg:h-[290px] flex justify-center items-center ${variant ==='leftHand' ?  'left-[-37px] rotate-180 z-[1000]' : 'right-[-37px]' }`}> 

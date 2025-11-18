@@ -1,13 +1,9 @@
-// import { useContext } from "react"
-// import { MovieContext } from "../context/MovieContext"
 import Skeleton from '@mui/joy/Skeleton';
 
 
 export default function MovieLoader() {
-//   const{ popular} = useContext(MovieContext);
-//   console.log(numbers);
-  
 
+  
   return (
         <>
 
