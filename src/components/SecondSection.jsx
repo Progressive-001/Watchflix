@@ -1,6 +1,6 @@
 
 import './SecondSection.css'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import MovieSection from './MovieSection'
@@ -12,6 +12,8 @@ export default function SecondSection() {
    const {isLoading, popular} = useContext(MovieContext)
    const [isAnimating, setIsAnimating] = useState(false)
    const [show, setShow] = useState(false) 
+   const [translateValue, setTranslateValue] = useState(0);
+   const cardRef = useRef(null)
 
    console.log(isLoading);
 
@@ -55,8 +57,16 @@ export default function SecondSection() {
 
 
 
-               {isLoading ? (
-                  <div className={`${isAnimating ? 'transition -translate-x-[1030px] duration-1000': 'translate-x-[0px] duration-1000'} flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]`}> 
+              {isLoading ? (
+                  <div
+                     style={{
+                        transform: isAnimating
+                        ? `translateX(-${translateValue}px)`
+                        : "translateX(0px)",
+                        transition: "transform 1s ease-in-out",
+                     }}
+                     className="flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]"
+                  >
                      <MovieLoader />
                   </div> 
                ) : (
