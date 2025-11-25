@@ -1,5 +1,5 @@
 import './SecondSection.css'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
@@ -12,6 +12,8 @@ export default function SecondSection() {
    const {isLoading, popular} = useContext(MovieContext)
    const [isAnimating, setIsAnimating] = useState(false)
    const [show, setShow] = useState(false) 
+   const [translateValue, setTranslateValue] = useState(0);
+   const cardRef = useRef(null)
 
    console.log(isLoading);
 
