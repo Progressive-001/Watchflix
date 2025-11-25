@@ -10,7 +10,6 @@ export default function MovieModal({pop, index, isOpen, onClose}) {
     const { popular} = useContext(MovieContext);
 
     console.log(popular);
-    
 
   return (
 
@@ -46,7 +45,9 @@ export default function MovieModal({pop, index, isOpen, onClose}) {
                 </div>}
             
         </div>
-    )
+      )}
+    </div>
+  )
 }
 
 
