@@ -4,7 +4,7 @@ import { MovieContext } from "../context/MovieContext"
 import MovieModal from "./MovieModal";
 
 
-export default function MovieSection({cardRef, isAnimating}) {
+export default function MovieSection({isAnimating}) {
   const{ popular} = useContext(MovieContext);
   const [openModalIndex, setOpenModalIndex] = useState(null);
   console.log(popular);
@@ -23,7 +23,7 @@ export default function MovieSection({cardRef, isAnimating}) {
             {popular && popular.slice(0,10).map((contents, index)=>
                 
             
-                <div onClick={() => handleClick(index)} ref={index === 0 ? cardRef : null} key={index} className="card-container relative hover:cursor-pointer hover:scale-105 transition-transform duration-500 bg-black border border-gray-500 rounded-[8px]">
+                <div onClick={() => handleClick(index)} key={index} className="card-container relative hover:cursor-pointer hover:scale-105 transition-transform duration-500 bg-black border border-gray-500 rounded-[8px]">
                     <div className="image-container w-[120px] h-[160px] sm:w-[112px] md:w-[150px] lg:w-[180px] sm:h-[152px] md:h-[220px] lg:h-[252px] rounded-[8px] overflow-hidden">
                             <img
                                 src={`https://image.tmdb.org/t/p/w500${contents.poster_path}`}

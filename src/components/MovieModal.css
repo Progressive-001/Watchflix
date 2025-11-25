@@ -1,0 +1,50 @@
+.buttonContainer-3{
+    padding: 8px 16px;
+    border-radius: 5px;
+    gap: 15px;
+    /* margin: 0px auto; */
+    margin-bottom: 40px;
+    margin-left: 30px;
+    /* position:fixed;     */
+}
+
+.closeButton{
+    z-index: 9999;
+}
+
+.closeButton:hover{
+    opacity: 80%;
+    transition: background-color 0.7s, opacity 0.7s;
+    z-index: 9999;
+}
+
+.cover::before{
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to left bottom, rgba(22, 22, 22, 0), rgba(22, 22, 22, 1) 70%, rgba(22, 22, 22, 1));
+    /* background-image: linear-gradient(to left bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0.95)); */
+    /* z-index: -1; */
+
+}
+
+.cover1::before{
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0), rgba(22, 22, 22, 0), rgba(22, 22, 22, 0.9));
+    /* background-image: linear-gradient(to left bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0.95)); */
+    /* z-index: -1; */
+
+}
+
+.blurryBackground{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}

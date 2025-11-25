@@ -8,16 +8,16 @@ export const MovieProvider = ({ children }) => {
   const [popular, setPopular] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [topRated, setTopRated] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchMovies = async () => {
-      setIsLoading(true);
+      setIsLoading(false);
       try {
-        await new Promise((resolve)=>setTimeout(resolve, 4000))
+        // await new Promise((resolve)=>setTimeout(resolve, 4000))
 
         const [popRes, topRes, upRes] = await Promise.all([
           api.get("/movie/popular", { signal: controller.signal }),
@@ -29,7 +29,7 @@ export const MovieProvider = ({ children }) => {
         setTopRated(topRes.data.results);
         setUpcoming(upRes.data.results);
         setError(null);
-        setIsLoading(false);
+        // setIsLoading(false);
 
       } catch (error) {
         if (error.name === "CanceledError") {
