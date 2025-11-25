@@ -1,12 +1,12 @@
-
 import './SecondSection.css'
 import { useContext, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
 import MovieSection from './MovieSection'
 import SideBarControl from './SideBarControl'
 import MovieLoader from './MovieLoader'
-import MovieModal from './MovieModal'
+// import MovieModal from './MovieModal'
 
 export default function SecondSection() {
    const {isLoading, popular} = useContext(MovieContext)
@@ -15,10 +15,6 @@ export default function SecondSection() {
 
    console.log(isLoading);
 
-//     const handleClick = (index) => {
-//     console.log("Card clicked:", index);
-//   }
-   
  
   return (
       <div className='second-section '>
@@ -54,17 +50,12 @@ export default function SecondSection() {
                </AnimatePresence>
 
 
-
-               {isLoading ? (
+               {isLoading || popular.length === 0 ? (
                   <div className={`${isAnimating ? 'transition -translate-x-[1030px] duration-1000': 'translate-x-[0px] duration-1000'} flex p-0 my-[20px] gap-[25px] sm:gap-[20px] md:gap-[30px] lg:gap-[36px]`}> 
                      <MovieLoader />
                   </div> 
                ) : (
-                  <div> 
-                        {/* {popular && popular.slice(0,10).map((contents, index)=> */}
-                           <MovieSection isAnimating={isAnimating}/>
-                        {/* // )} */}
-                  </div>
+                  <MovieSection isAnimating={isAnimating} />
                )}
 
                <AnimatePresence>
