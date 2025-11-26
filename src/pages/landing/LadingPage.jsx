@@ -1,23 +1,15 @@
 import Header from '../../components/Header'
 import LandingDetails from '../../components/LandingDetails'
-// import { useEffect } from 'react'
-// import HeroImage from '/assets/landingPage/Hero Image.webp'
+
 
 import './landingPage.css'
-// import FirstSection from '../../components/Firstsection'
+
 import SecondSection from '../../components/SecondSection'
-import FaqSection from '../../components/FaqSection'
+import FaqSection from '../../components/faq/FaqSection'
 import ThirdSection from '../../components/ThirdSection'
 import FooterLandingPage from '../../components/footers/FooterLandingPage'
 
 export default function LandingPage() {
-  // useEffect(() =>{
-  //   const API_KEY = '03858a4709caa9506ba77cb561f9b589';
-  //   fetch(`https://api.themoviedb.org/3/movie/560?api_key=${API_KEY}`)
-  //   .then(response => response.json())
-  //   .then(data => console.log(data))
-  //   .catch(err => console.err(err))
-  // },[])
 
   return (
     <div className='landing-container'>
@@ -52,13 +44,3 @@ export default function LandingPage() {
     </div>
   )
 }
-
-
-{/* <div className="full-bleed bg-black">
-  <div className="subSections flex flex-col">
-    <SecondSection />
-    <ThirdSection />
-    <FaqSection />
-    <FooterLandingPage />
-  </div>
-</div> */}

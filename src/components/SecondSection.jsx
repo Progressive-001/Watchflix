@@ -1,23 +1,24 @@
-import './SecondSection.css'
-import { useContext, useEffect, useRef, useState } from 'react'
-import { MovieContext } from '../context/MovieContext'
+//Hook imports
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
+import { useContext, useState } from 'react'
+import { MovieContext } from '../context/MovieContext'
+
+//styles
+import './SecondSection.css'
+
+//Components
 import MovieSection from './MovieSection'
 import SideBarControl from './SideBarControl'
 import MovieLoader from './MovieLoader'
-// import MovieModal from './MovieModal'
 
 export default function SecondSection() {
    const {isLoading, popular} = useContext(MovieContext)
    const [isAnimating, setIsAnimating] = useState(false)
    const [show, setShow] = useState(false) 
-   const [translateValue, setTranslateValue] = useState(0);
-   const cardRef = useRef(null)
 
-   console.log(isLoading);
+   // console.log(isLoading);
 
- 
   return (
       <div className='second-section '>
 

@@ -8,6 +8,7 @@ export const MovieProvider = ({ children }) => {
   const [popular, setPopular] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [topRated, setTopRated] = useState([]);
+  const [genreRes, setGenreRes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -19,15 +20,17 @@ export const MovieProvider = ({ children }) => {
       try {
         // await new Promise((resolve)=>setTimeout(resolve, 4000))
 
-        const [popRes, topRes, upRes] = await Promise.all([
+        const [popRes, topRes, upRes, genreRes] = await Promise.all([
           api.get("/movie/popular", { signal: controller.signal }),
           api.get("/movie/top_rated", { signal: controller.signal }),
           api.get("/movie/upcoming", { signal: controller.signal }),
+          api.get("/genre/movie/list", { signal: controller.signal }),
         ]);
 
         setPopular(popRes.data.results);
         setTopRated(topRes.data.results);
         setUpcoming(upRes.data.results);
+        setGenreRes(genreRes.data.genres);
         setError(null);
         // setIsLoading(false);
 
@@ -52,7 +55,7 @@ export const MovieProvider = ({ children }) => {
 
   return (
     <MovieContext.Provider
-      value={{ error, isLoading, popular, topRated, upcoming, allMovie }}
+      value={{ error, isLoading, popular, topRated, upcoming, allMovie, genreRes }}
     >
       {children}
     </MovieContext.Provider>
