@@ -1,15 +1,10 @@
-import React from 'react'
-
-// import pcIcon from '../assets/landingPage/New folder/icon3.svg'
-// import pcIcon1 from '../assets/landingPage/New folder/icon.svg'
-// import pcIcon2 from '../assets/landingPage/New folder/icon.svg'
-// import pcIcon3 from '../assets/landingPage/New folder/icon.svg'
-
+//assets
 import pcIcon from '../assets/landingPage/New folder//icon1.svg'
 import pcIcon1 from '../assets/landingPage/New folder//icon2.svg'
 import pcIcon2 from '../assets/landingPage/New folder//icon3.svg'
 import pcIcon3 from '../assets/landingPage/New folder//icon4.svg'
 
+//styles
 import './ThirdSection.css'
 
 export default function ThirdSection() {

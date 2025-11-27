@@ -1,3 +1,4 @@
+//assets
 import sideControl from "../assets/landingPage/Signup Arrow.svg" 
 
 export default function SideBarControl({ setIsAnimating, variant, setShow}) {

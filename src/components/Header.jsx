@@ -1,8 +1,10 @@
-import React from 'react'
-
+//assets
 import HeroImage from '../assets/landingPage/Wordmark.svg'
+
+//Hooks
 import { NavLink } from 'react-router-dom/cjs/react-router-dom'
 
+//styles
 import './Header.css'
 
 export default function Header() {
