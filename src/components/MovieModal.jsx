@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useContext, useEffect } from 'react'
 import { MovieContext } from '../context/MovieContext'
+import './MovieModal.css'
 
 //styles
 import './MovieModal.css'
