@@ -1,6 +1,10 @@
+//Hooks
 import { useState} from 'react'
+
+//assets
 import SignupArrow from '/src/assets/landingPage/Signup Arrow.svg'
 
+//styles
 import './signup1.css'
 
 export default function Signup() {

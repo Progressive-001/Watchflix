@@ -19,11 +19,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 // Services
 const projectFirestore = getFirestore(app);
 const projectAuth = getAuth(app);
 const projectStorage = getStorage(app);
+
 
 // Timestamp
 const timestamp = Timestamp;

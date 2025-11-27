@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LadingPage from './pages/landing/LadingPage'
 
 import './App.css'
+import SignIn from './pages/authentication/SignIn'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
         <Route exact path='/'><LadingPage /></Route>
 
-        <Route exact path='/'><LadingPage /></Route>
+        <Route exact path='/login'><SignIn /></Route>
 
         <Route exact path='/'><LadingPage /></Route>
 
