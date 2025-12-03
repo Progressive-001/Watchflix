@@ -1,10 +1,14 @@
+//Hooks
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { useContext, useEffect } from 'react'
 import { MovieContext } from '../context/MovieContext'
 import './MovieModal.css'
 
+//styles
 import './MovieModal.css'
+
+//assets
 import closeIcon from "/src/assets/landingPage/Cross.svg";
 import SignupArrow from '/src/assets/landingPage/Signup Arrow.svg'
 

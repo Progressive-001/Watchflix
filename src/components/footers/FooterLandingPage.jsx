@@ -1,12 +1,17 @@
-
+//Hooks
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom'
+
+//components
 import Signup1 from '../Signup1'
+import ScrollButton from '../ScrollButton'
+
+//styles
 import './FooterLandingPage.css'
 
+//assets
 import icon1 from '/src/assets/landingPage/dropDown.svg'
 import icon2 from '/src/assets/landingPage/globeLang.svg'
-import { NavLink } from 'react-router-dom/cjs/react-router-dom'
-import ScrollButton from '../ScrollButton'
 
 
 export default function FooterLandingPage() {

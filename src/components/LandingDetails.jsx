@@ -1,8 +1,10 @@
-import React from 'react'
+//components
 import Signup from './Signup'
 
+//assets
 import HeroImage from '../assets/landingPage/Hero Image.webp'
 
+//styles
 import './LandingDetail.css'
 
 

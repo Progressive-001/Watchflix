@@ -1,6 +1,8 @@
+//Hooks
 import { useContext, useState } from "react"
 import { MovieContext } from "../context/MovieContext"
-// import Skeleton from '@mui/joy/Skeleton';
+
+//components
 import MovieModal from "./MovieModal";
 
 
