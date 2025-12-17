@@ -2,10 +2,11 @@
   width: 100%;
   text-align: center;
   color: white;
+  background: #000;
 }
 
 .app-container{
   z-index: -9999;
-  background: #000;
+  /* background: red; */
   height: 100%;
 }

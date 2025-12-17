@@ -1,9 +1,9 @@
 //Hooks
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom/cjs/react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 //components
-import Signup1 from '../Signup1'
+import Signup1 from '../signup/Signup1'
 import ScrollButton from '../ScrollButton'
 
 //styles

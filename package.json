@@ -54,7 +54,13 @@
       "prettier"
     ],
     "rules": {
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_|^[A-Z]" }]
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_|^[A-Z]"
+        }
+      ]
     }
   }
 }
