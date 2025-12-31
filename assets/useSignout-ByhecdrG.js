@@ -1,1 +1,0 @@
-import{r as e,u as i,H as f,p as g}from"./index-BykVF5uZ.js";const d=()=>{const[a,r]=e.useState(!1),[u,s]=e.useState(!1),[o,t]=e.useState(null),{dispatch:l}=i(),c=async()=>{s(!0),t(null);try{await f(g),l({type:"LOGOUT"}),a||(s(!1),t(null))}catch(n){a||(console.log(n.message),t(n.message),s(!1))}};return e.useEffect(()=>()=>r(!0),[]),{isPending:u,error:o,logOut:c}};export{d as u};
