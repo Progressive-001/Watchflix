@@ -1,0 +1,25 @@
+.movie-title {
+  font-size: clamp(1.8rem, 4vw, 4.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  /* max-width: 90%; */
+  text-align: left;
+  text-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.movie-overview {
+  /* font-size: clamp(0.8rem, 4vw, 1.8rem); */
+  font-weight: 400;
+  color: #ffffff;
+  /* letter-spacing: -0.02em;
+  line-height: 1.1; */
+  text-align: justify;
+  /* max-width: 90%; */
+  text-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}

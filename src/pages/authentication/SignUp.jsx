@@ -1,37 +1,44 @@
 //Hooks
 // eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, domAnimation, LazyMotion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
 import { NavLink } from 'react-router-dom'
 import { useSignup } from "../../hooks/useSignup";
 import { useSignout } from '../../hooks/useSignout';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useHistory } from 'react-router-dom';
+import { useQuery } from '../../hooks/useQuery';
 
 
 //Component
 import FooterAuthPage from "../../components/footers/FooterAuthPage";
 
 //Asset
-import HeroImage from '../../assets/landingPage/Wordmark.svg'
-import circleErr from '../../assets/CircleError.svg'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { CircleErr, LogoIcon } from '../../components/Icons/Icons.jsx'
 
-export default function SignUp({stepping}) {
+// Style
+import './SignIn.css'
+
+
+
+export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { error, isPending, signup } = useSignup()
   const { logOut } = useSignout()
-  // const [ steps, setSetps ] = useState(2)
   const { user } = useAuthContext()
   const [ isEmailValid, setIsEmailValid ] = useState(null)
   const [ isPasswordValid, setIsPasswordValid ] = useState(null)
-  const history = useHistory()
+  // const history = useHistory()
+  const query = useQuery();
+  const steps = query.get('step');
+  const destination = query.get('destination');
   
 
   const handleSubmit =  async (e) => {
     e.preventDefault()
     await signup(email, password, setIsEmailValid, setIsPasswordValid)
-    history.push('/authentication/complete-signup')
+    // await setTimeout(() => history.push('/authentication/complete-signup?step=2&destination=2'), 1000)
     console.log(email, error, password, "isPending:", isPending)
   }
 
@@ -46,12 +53,12 @@ export default function SignUp({stepping}) {
 
 
   return (
-    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100%]">
+    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100vh]">
       <div className=" w-full flex flex-col justify-center mt-[10px] items-center gap-[20px]">
 
           <div className="flex justify-between items-center w-full ">
               <NavLink to="/" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px]'>
-                  <img src={HeroImage} alt="" className=''/>
+                  <LogoIcon className=''/>
               </NavLink>
 
               <NavLink to="/SignIn" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px] no-underline font-bold'>
@@ -68,7 +75,7 @@ export default function SignUp({stepping}) {
         <div className="flex flex-col gap-[20px] w-full max-w-[480px]">
 
           <div className="py-[10px] text-left w-full max-w-[400px]">
-            <span className="font-normal text-gray-700">STEP {} OF {stepping}</span>
+            <span className="font-normal text-gray-700">STEP {steps} OF {destination}</span>
             <h1 className="font-medium text-mlargeTitle pb-[20px]">Create a Password to start your membership</h1>
             <p>Just a few more steps and you're done!</p>
             <p>We hate paperwork, too.</p>
@@ -109,9 +116,10 @@ export default function SignUp({stepping}) {
                 className={`login-container !bg-transparent ${isPasswordValid === true ? '!border-green-600' : isPasswordValid === false ? '!border-red-600' : " "}`} 
 
               />
-              <AnimatePresence>
-                {error && 
-                    <motion.div
+              <LazyMotion features={domAnimation}>
+                <AnimatePresence>
+                  {error && 
+                    <m.div
                       key="error-motion"
                       className='text-red-600 text-left flex gap-3'
                       initial={{ opacity: 0, x: 0}}
@@ -119,10 +127,12 @@ export default function SignUp({stepping}) {
                       exit={{ opacity: 0, x: 0}}
                       transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
-                      <img src={circleErr} alt={circleErr} className='w-[20px]' /> {error}
-                    </motion.div>
-                }
-              </AnimatePresence>
+                      <CircleErr className='w-[20px]' /> {error}
+                    </m.div>
+                  }
+                </AnimatePresence>
+              </LazyMotion>
+             
 
             </div>
             

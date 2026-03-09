@@ -18,7 +18,7 @@ export default function LandingDetails() {
     <div className='landing-details' id='landingPage'>
 
       <div className='image-container'>
-        <img src={HeroImage} alt='' className='hero-image '/>
+        <img src={HeroImage} alt='' className='hero-image' loading='eager'/>
         <div className='overlay'></div>
       </div>
       

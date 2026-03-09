@@ -10,12 +10,47 @@
   box-sizing: border-box;
 }
 
+/* 1. Standard approach for Firefox */
+html {
+  scrollbar-width: wide;
+  scrollbar-color: rgb(59, 59, 59) black; /* thumb | track */
+  width: 100%;
+  height: 100%;
+}
+
+  /* 2. WebKit approach for Chrome, Safari, and Edge */
+
+  /* The entire scrollbar area */
+  ::-webkit-scrollbar {
+    width: 10px ;
+    height: 10px ;
+  }
+
+  /* The background of the scrollbar (the track) */
+  ::-webkit-scrollbar-track {
+    background: black ;
+  }
+
+  /* The draggable part (the thumb) */
+  ::-webkit-scrollbar-thumb {
+    background-color:  rgb(59, 59, 59) ;
+    border-radius: 10px ;
+    border: 3px solid #f1f1f1 ;    /* Creates "padding" around the thumb */
+  }
+
+  /* Change color when the user hovers over it */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color:  rgb(65, 65, 65) ;
+  }
+
+
 body{
     display: flex;
     justify-content: center;
     align-items: start;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    /* overflow: hidden; */
     overflow-x: hidden;
 }
 
@@ -24,6 +59,7 @@ body{
   src: url('assets/fonts/NetflixSans-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -31,6 +67,7 @@ body{
   src: url('assets/fonts/NetflixSans-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -38,6 +75,7 @@ body{
   src: url('assets/fonts/NetflixSans-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -45,6 +83,7 @@ body{
   src: url('assets/fonts/NetflixSans-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -52,6 +91,8 @@ body{
   src: url('assets/fonts/BebasNeue-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
+
 
 

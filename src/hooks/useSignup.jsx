@@ -3,6 +3,7 @@ import { projectAuth } from '../firebase/config'
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { sendSignInLinkToEmail } from "firebase/auth"
 import { useAuthContext } from "./useAuthContext"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 export const useSignup = () => {
     const [isCancelled, setIsCancelled] = useState(false)
@@ -10,6 +11,8 @@ export const useSignup = () => {
     const [emailError, setEmailError] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const { dispatch } = useAuthContext()
+
+    const history = useHistory()
 
     // PASSWORD SIGNUP
     const signup = async (email, password, setIsEmailValid, setIsPasswordValid) => {
@@ -24,12 +27,7 @@ export const useSignup = () => {
             //dispatch login action 
             dispatch({ type: "LOGIN", payload: res.user })
 
-            // if(res.user) {
-            //     window.location.href = '/authentication/complete-signup'
-            // } else {
-            //     console.log("No user found after signup");
-            // }
-
+            await setTimeout(() => history.push('/authentication/complete-signup?step=2&destination=2'), 1000)
 
             if (!isCancelled) {
                 setIsPending(false)
@@ -81,7 +79,7 @@ export const useSignup = () => {
 
     // EMAIL-LINK SIGNUP
     const actionCodeSettings = {
-        url: `${window.location.origin}/authentication/complete-signup`,
+        url: `${window.location.origin}/authentication/complete-signup?step=2&destination=2`,
         handleCodeInApp: true,
     };
 

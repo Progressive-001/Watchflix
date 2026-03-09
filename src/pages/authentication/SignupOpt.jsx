@@ -3,32 +3,35 @@
 import { useSignup } from "../../hooks/useSignup";
 import { NavLink, useHistory } from 'react-router-dom'
 import FooterAuthPage from "../../components/footers/FooterAuthPage";
+import { useQuery } from "../../hooks/useQuery";
 
 //Components
 
 //Assets
 import messageIcon from '../../assets/Messgae-Icon.png'
-import HeroImage from '../../assets/landingPage/Wordmark.svg'
+import { LogoIcon } from '../../components/Icons/Icons.jsx'
 
 
-export default function SignupOpt({stepping}) {
+export default function SignupOpt() {
     const { isPending, signupEmail } = useSignup()
-    // const [ steps, setSetps ] = useState(2)
     const history = useHistory()
+    const query = useQuery();
+    const steps = query.get('step');
+    const destination = query.get('destination');
 
 
     const goTOSignup = () => {
-        history.push('/signup')
+        history.push('/signup?step=1&destination=2')
     }
 
   return (
-    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100%]">
+    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100vh]">
         {/* <h1>{message}</h1> */}
         <div className=" w-full flex flex-col justify-center mt-[10px] items-center gap-[20px]">
 
             <div className="flex justify-between items-center w-full ">
                 <NavLink to="/" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px]'>
-                    <img src={HeroImage} alt="" className=''/>
+                    <LogoIcon className=''/>
                 </NavLink>
 
                 <NavLink to="/SignIn" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px] no-underline font-bold'>
@@ -50,7 +53,7 @@ export default function SignupOpt({stepping}) {
 
             <div className="flex flex-col gap-[20px]">
                 <div className="py-[10px]">
-                    <span className="font-normal text-gray-700">STEP {} OF {stepping}</span>
+                    <span className="font-normal text-gray-700">STEP {steps} OF {destination}</span>
                     <h1 className="font-bold text-mtitle2 pb-[20px]">Check your inbox</h1>
                     <p>We sent a sign-up link to <span className="font-bold">{localStorage.getItem('emailForSignIn')}</span></p>
                     <p>Tap the link in the email to finish setting up your account</p>

@@ -9,7 +9,7 @@ export const useFinishSignUp = () => {
 
   const completeSignUp = () => {
     if (!user.displayName && !user.photoURL) {
-      history.push("/signup-option")
+      history.push("/signup-option?step=1&destination=2")
     }
   }
 

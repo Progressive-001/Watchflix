@@ -12,7 +12,7 @@ import './signup.css'
 
 export default function Signup1() {
   const [email, setEmail] = useState('')
-  const { emailError, isPending, signupEmail } = useSignup();
+  const { isPending, signupEmail } = useSignup();
   const { completeSignUp, user, history} = useFinishSignUp();
 
 
@@ -26,7 +26,7 @@ export default function Signup1() {
 
     } else {
       await signupEmail(email)
-      setTimeout(history.push("/signup-option"), 3000)
+      setTimeout(() => history.push("/signup-option?step=1&destination=2"), 3000)
       document.getElementsByClassName('input-container')[0].style.borderColor  = 'green';
 
     }

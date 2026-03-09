@@ -1,27 +1,29 @@
 //Hooks
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
 import { NavLink } from 'react-router-dom'
-import { useCompleteForm } from '../../hooks/useCompleteForm';
+import { useQuery } from '../../hooks/useQuery'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useCompleteForm } from '../../hooks/useCompleteForm'
+// eslint-disable-next-line no-unused-vars
+import { m, LazyMotion, domAnimation, AnimatePresence } from 'framer-motion'
 
 //Component
 import FooterAuthPage from "../../components/footers/FooterAuthPage";
 
 //Asset
-import HeroImage from '../../assets/landingPage/Wordmark.svg'
-import circleErr from '../../assets/CircleError.svg'
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { LogoIcon, CircleErr} from '../../components/Icons/Icons'
 
-export default function CompleteSignup({stepping}) {
+export default function CompleteSignup() {
 
     const [displayName, setDisplayName] = useState('');
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnailError, setThumbnailError] = useState(null)
     const { error, loading, handleForm } = useCompleteForm()
     const { user } = useAuthContext();
-    
-
+    const query = useQuery();
+    const steps = query.get('step');
+    const destination = query.get('destination');
+     
     const handleFileChange = (e) => {
         setThumbnail(null)
         let selected = e.target.files[0]
@@ -35,7 +37,7 @@ export default function CompleteSignup({stepping}) {
             setThumbnailError("Selected file must be an image")
             return
         }
-        if(selected.size > 200000) {
+        if(selected.size > 300000) {
             setThumbnailError("Image file size must be less than 200kb")
             return
         }
@@ -55,12 +57,12 @@ export default function CompleteSignup({stepping}) {
     
 
   return (
-    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100%]">
+    <div className="  text-[#000000B3] bg-[#FFFFFF] w-full flex flex-col justify-center items-center z-[9999] gap-[50px] overflow-x-hidden h-[100vh]">
         <div className=" w-full flex flex-col justify-center mt-[10px] items-center gap-[20px]">
 
             <div className="flex justify-between items-center w-full ">
                 <NavLink to="/" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px]'>
-                    <img src={HeroImage} alt="" className=''/>
+                    <LogoIcon  className=''/>
                 </NavLink>
 
                 <NavLink to="/login" className='z-[9999] mb-[0px] mt-[20px] mx-[100px] w-[120px] no-underline font-bold'>
@@ -77,8 +79,8 @@ export default function CompleteSignup({stepping}) {
             <div className="flex flex-col gap-[20px] w-full max-w-[480px]">
 
                 <div className="py-[10px] text-left w-full max-w-[400px]">
-                    <span className="font-normal text-gray-700">STEP {} OF {stepping}</span>
-                    <h1 className="font-medium text-mlargeTitle pb-[20px]">Create a Password to start your membership</h1>
+                    <span className="font-normal text-gray-700">STEP {steps} OF {destination}</span>
+                    <h1 className="font-medium text-mlargeTitle pb-[20px]">Provide your name and profile picture</h1>
                     <p>Just a few more steps and you're done!</p>
                     <p>We hate paperwork, too.</p>
                 </div>
@@ -103,21 +105,22 @@ export default function CompleteSignup({stepping}) {
                             className={`login-container !bg-transparent`} 
                         />
 
-                        <AnimatePresence>
-                            {thumbnailError && 
-                                <motion.div
-                                    key="error-motion"
-                                    className='text-red-600 text-left flex gap-3'
-                                    initial={{ opacity: 0, x: 0}}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 0}}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                >
-                                    <img src={circleErr} alt={circleErr} className='w-[20px]' /> {thumbnailError}
-                                </motion.div>
-                            }
-                        </AnimatePresence>
-
+                        <LazyMotion features={domAnimation}>
+                            <AnimatePresence>
+                                {thumbnailError && 
+                                    <m.div
+                                        key="error-motion"
+                                        className='text-red-600 text-left flex gap-3'
+                                        initial={{ opacity: 0, x: 0}}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 0}}
+                                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    >
+                                        <CircleErr className='w-[20px]' /> {thumbnailError}
+                                    </m.div>
+                                }
+                            </AnimatePresence>
+                        </LazyMotion>
                     </div>
                     
                     <div className="font-bold">

@@ -8,7 +8,7 @@ export const useCompleteForm = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [getUser, setGetUser] = useState(null)
-  const { getOrCreateUser } = useGetOrCreateUser()
+  const { getOrCreateUser } = useGetOrCreateUser();
 
   const handleForm = async ({ displayName, thumbnail }) => {
     

@@ -34,6 +34,8 @@ export const useSignIn = () => {
                 console.log(err.message);
                 setError(err.message)
                 setIsPending(false)
+                const errorCode = err.code;
+                console.error(`Error signing in with email link: ${errorCode} - ${err.message}`);
             }
         }
     }
@@ -41,7 +43,7 @@ export const useSignIn = () => {
 
     // EMAIL-LINK SIGNUP
     const actionCodeSettings = {
-        url: `${window.location.origin}/authentication/complete-signup`,
+        url: `${window.location.origin}/authentication/complete-signup?step=2&destination=2`,
         handleCodeInApp: true,
     };
 
