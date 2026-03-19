@@ -72,7 +72,7 @@ export default function Popular({setOpenModalIndex, shufflePopular, heroMovieId}
                     //RENDER LIST OF CARDS
                     shufflePopular.slice(0, 20).map((popularMovie, index) => (
                         <MovieCard 
-                            key={popularMovie.id} 
+                            key={`popular-${popularMovie.id}-${index}`}
                             movie={popularMovie} 
                             handleClick={handleClick} 
                             index={index} 

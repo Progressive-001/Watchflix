@@ -13,46 +13,46 @@ export const MovieProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let isMounted = true;
     let timer;
 
     const fetchMovies = async () => {
       try {
-        await new Promise((resolve)=>setTimeout(resolve, 3000))
+        await new Promise((resolve)=>setTimeout(resolve, 1000))
+
+        if (!isMounted) return;
 
         const [popRes, topRes, upRes, genreRes] = await Promise.all([
-          api.get("/movie/popular", { signal: controller.signal }),
-          api.get("/movie/top_rated", { signal: controller.signal }),
-          api.get("/movie/upcoming", { signal: controller.signal }),
-          api.get("/genre/movie/list", { signal: controller.signal }),
-          // api.get(`movie/${movie_id}/videos`, { signal: controller.signal })
+          api.get("/movie/popular"),
+          api.get("/movie/top_rated"),
+          api.get("/movie/upcoming"),
+          api.get("/genre/movie/list"),
         ]);
 
-        setPopular(popRes.data.results);
-        setTopRated(topRes.data.results);
-        setUpcoming(upRes.data.results);
-        setGenreRes(genreRes.data.genres);
-        setError(null);
-        // setIsLoading(false);
+        if (isMounted) {
+          setPopular(popRes.data.results);
+          setTopRated(topRes.data.results);
+          setUpcoming(upRes.data.results);
+          setGenreRes(genreRes.data.genres);
+          setError(null);
+        }
 
       } catch (error) {
-        if (error.name === "CanceledError" || error.code === "ERR_CANCELED") {
-          console.log("Request aborted");
-        } else {
+        if (isMounted) {
           console.error(error.message);
           setError("Unable to fetch movies");
         }
       } finally {
-        timer = setTimeout(() => {
-          setIsLoading(false)
-        }, 3000)
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchMovies();
 
     return () => {
-      controller.abort();
+      isMounted = false;
       clearTimeout(timer);
     };
   }, []);

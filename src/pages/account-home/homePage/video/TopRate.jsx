@@ -67,7 +67,7 @@ export default function TopRate({setOpenModalIndex, shuffleTopRated, heroMovieId
                         // Render Cards
                         shuffleTopRated.slice(0, 20).map((topMovie, index) => (
                             <MovieCard 
-                                key={topMovie.id} 
+                                key={`toprate-${topMovie.id}-${index}`}
                                 movie={topMovie} 
                                 handleClick={handleClick} 
                                 index={index} 

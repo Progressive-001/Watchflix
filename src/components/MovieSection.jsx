@@ -36,7 +36,7 @@ export default function MovieSection({ trackRef, cardRef, currentIndex, cardWidt
             
                 <div 
                     onClick={() => handleClick(index)} 
-                    key={index} 
+                    key={`popular-card-${contents.id}-${index}`}
                     className="card-container relative hover:cursor-pointer hover:scale-105 transition-transform duration-500 bg-black border border-gray-500 rounded-[8px]"
                     // style={{ width: `${}`}}
                     ref={index === 0 ? cardRef : null}
@@ -63,7 +63,7 @@ export default function MovieSection({ trackRef, cardRef, currentIndex, cardWidt
         
         {popular && popular.slice(0,10).map((movie, index) =>
             <MovieModal 
-              key={movie.id}
+              key={`popular-modal-${movie.id}-${index}`}
               movie={movie} 
               index={index} 
               isOpen={openModalIndex === index}

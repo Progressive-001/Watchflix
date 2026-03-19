@@ -69,7 +69,7 @@ export default function AllMovie({setOpenModalIndex, shuffleAllMovie, heroMovieI
                         // Map through movies and render the Cards
                         shuffleAllMovie.slice(0, 20).map((movie, index) => (
                             <MovieCard 
-                                key={movie.id} 
+                                key={`all-movie-${movie.id}-${index}`} 
                                 movie={movie} 
                                 handleClick={handleClick}  
                                 index={index}

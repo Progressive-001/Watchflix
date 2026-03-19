@@ -54,12 +54,15 @@ function App() {
                   {!user && <SignIn/>}
                 </Route>
 
-                <Route path="/authentication/complete-signup">
-                  {!user &&  <CompleteSignup />}
-                  {user && (user.displayName == null || user.photoURL == null ) && <CompleteSignup />}
-                  {!user && <SignupOpt />}
+                <Route exact path='/signup'>
+                  {!user && <SignUp />}
                   {user && <Redirect to="/authentication/complete-signup" />}
-                  
+                </Route>
+
+                <Route path="/authentication/complete-signup">
+                  {!user &&  <Redirect to="/" />}
+                  {user && (user.displayName == null || user.photoURL == null ) && <CompleteSignup />}
+                  {user && (user.displayName && user.photoURL) && <Redirect to="/account-home" />}
                 </Route>
 
                 <Route path={`/account-home`}>
@@ -81,9 +84,9 @@ function App() {
                   {user && <Redirect to="/account-home" />}
                 </Route> */}
 
-                <Route path="/signup">
-                  {!user && <SignUp />}
-                  {user && <Redirect to="/authentication/complete-signup" />}
+                <Route exact path='/signup-option'>
+                  {!user && <SignupOpt />}
+                  {user && <Redirect to="/account-home" />}
                 </Route>
 
               </Switch>

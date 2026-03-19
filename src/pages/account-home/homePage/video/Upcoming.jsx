@@ -68,7 +68,7 @@ export default function Upcoming({setOpenModalIndex, shuffleUpcoming, heroMovieI
                         // Render List of Cards
                         shuffleUpcoming.slice(0, 20).map((upcomingMovie, index) => (
                             <MovieCard 
-                                key={upcomingMovie.id} 
+                                key={`upcoming-${upcomingMovie.id}-${index}`}
                                 movie={upcomingMovie} 
                                 handleClick={handleClick} 
                                 index={index} 
