@@ -14,7 +14,6 @@ export default function FooterAuthPage({variant}) {
             <NavLink className='active:text-red-700' to="/faq">Cookie Preferences</NavLink>
             <NavLink className='active:text-red-700' to="/faq">Corporate Information</NavLink>
         </div>
-        
       </div>
   )
 }

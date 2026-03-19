@@ -57,10 +57,6 @@ function App() {
                 <Route path="/authentication/complete-signup">
                   {!user &&  <CompleteSignup />}
                   {user && (user.displayName == null || user.photoURL == null ) && <CompleteSignup />}
-
-                </Route>
-
-                <Route path="/signup-option">
                   {!user && <SignupOpt />}
                   {user && <Redirect to="/authentication/complete-signup" />}
                   

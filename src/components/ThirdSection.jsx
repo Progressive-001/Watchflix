@@ -1,7 +1,6 @@
 //assets
 import { PcIcon, PcIcon1, PcIcon2, PcIcon3 } from './Icons/Icons.jsx'
 
-
 //styles
 import './ThirdSection.css'
 
