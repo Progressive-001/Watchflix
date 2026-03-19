@@ -1,5 +1,8 @@
+//Hooks
+// import { useRef } from 'react'
+
 //components
-import Signup from './Signup'
+import Signup from './signup/Signup'
 
 //assets
 import HeroImage from '../assets/landingPage/Hero Image.webp'
@@ -9,11 +12,13 @@ import './LandingDetail.css'
 
 
 export default function LandingDetails() {
+  // const landingPage = useRef(null)
+
   return (
-    <div className='landing-details '>
+    <div className='landing-details' id='landingPage'>
 
       <div className='image-container'>
-        <img src={HeroImage} alt='' className='hero-image '/>
+        <img src={HeroImage} alt='' className='hero-image' loading='eager'/>
         <div className='overlay'></div>
       </div>
       

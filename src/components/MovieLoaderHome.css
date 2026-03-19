@@ -1,0 +1,17 @@
+/* CustomStyles.css or similar file
+ .black-skeleton-wave {
+ Forces the base background color to black 
+  background-color: #000000 !important; 
+  
+   This is the tricky part. The wave is usually an animated 
+     gradient. We must override the gradient itself.
+     NOTE: This gradient code is common for wave animations.
+
+  background-image: linear-gradient(
+    90deg, 
+    #000000 0%, 
+    #6b7280 20%,  Your desired gray wave color 
+    #000000 40%, 
+    #000000 100%
+  ) !important;
+}  */

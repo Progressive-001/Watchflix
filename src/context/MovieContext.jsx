@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useMemo } from "react";
 import api from "../components/api/axios";
 
 export const MovieContext = createContext();
@@ -13,45 +13,56 @@ export const MovieProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let isMounted = true;
+    let timer;
 
     const fetchMovies = async () => {
-      setIsLoading(false);
       try {
-        // await new Promise((resolve)=>setTimeout(resolve, 4000))
+        await new Promise((resolve)=>setTimeout(resolve, 1000))
+
+        if (!isMounted) return;
 
         const [popRes, topRes, upRes, genreRes] = await Promise.all([
-          api.get("/movie/popular", { signal: controller.signal }),
-          api.get("/movie/top_rated", { signal: controller.signal }),
-          api.get("/movie/upcoming", { signal: controller.signal }),
-          api.get("/genre/movie/list", { signal: controller.signal }),
+          api.get("/movie/popular"),
+          api.get("/movie/top_rated"),
+          api.get("/movie/upcoming"),
+          api.get("/genre/movie/list"),
         ]);
 
-        setPopular(popRes.data.results);
-        setTopRated(topRes.data.results);
-        setUpcoming(upRes.data.results);
-        setGenreRes(genreRes.data.genres);
-        setError(null);
-        // setIsLoading(false);
+        if (isMounted) {
+          setPopular(popRes.data.results);
+          setTopRated(topRes.data.results);
+          setUpcoming(upRes.data.results);
+          setGenreRes(genreRes.data.genres);
+          setError(null);
+        }
 
       } catch (error) {
-        if (error.name === "CanceledError") {
-          console.log("Request aborted");
-        } else {
+        if (isMounted) {
           console.error(error.message);
           setError("Unable to fetch movies");
         }
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchMovies();
 
-    return () => controller.abort();
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
   }, []);
+  
+// Only re-calculate this giant array if the source data actually changes
+  const allMovie = useMemo(() => {
+    
+    return [...popular, ...upcoming, ...topRated];
 
-  const allMovie = [...popular, ...upcoming, ...topRated];
+  },[popular, upcoming, topRated])
 
   return (
     <MovieContext.Provider
